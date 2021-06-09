@@ -12,18 +12,13 @@ public class BoxOpenManager : MonoBehaviour
     [SerializeField] private Button openButton;
     //宝箱界面
     [SerializeField] private Image boxImage;
-
     //宝箱打开和关闭
     [SerializeField] private Image boxOpen;
     [SerializeField] private Image boxClose;
     //金币动画预制件
     [SerializeField] private GameObject moveCoinPerfab;
-    //private int n = 0;
-    
-    
     //计数
     private int createMoveCoinCount = 0;
-
     private int createMoveCoinSum = 1;
     //点击次数
      private int count = 0;
@@ -34,7 +29,6 @@ public class BoxOpenManager : MonoBehaviour
      //编辑金币数的Text
      public Text coinSumText;
      private bool isOn=true;
-
      private GameObject newGameObject;
      //初始化金币text
     void Start()
