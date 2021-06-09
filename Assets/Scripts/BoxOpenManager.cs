@@ -59,13 +59,13 @@ public class BoxOpenManager : MonoBehaviour
         } 
         boxClose.gameObject.SetActive(false);
         boxOpen.gameObject.SetActive(true);
-        if (count == 3)
+        if (count >= 3)
         {
             for (int i = 0; i < coinCount*(count+1); i++)
             {
                 AddCoinSum();
-                count++;
             }
+            count++;
             return;
         }
         count++;
