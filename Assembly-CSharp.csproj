@@ -58,7 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Script\Manager.cs" />
+     <Compile Include="Assets\Scripts\BoxOpenManager.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/caishen/git_code/project2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

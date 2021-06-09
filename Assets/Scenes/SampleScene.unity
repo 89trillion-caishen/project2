@@ -360,7 +360,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1356289160}
-        m_MethodName: openBox
+        m_MethodName: OpenBox
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1006,16 +1006,7 @@ MonoBehaviour:
   boxImage: {fileID: 432238172}
   boxOpen: {fileID: 1439836508}
   boxClose: {fileID: 948480584}
-  TargetReckTransform: {fileID: 1638348333}
-  moveCoin1: {fileID: 5713943346764208225, guid: 88295403d3ec14d0fb2ef1789ff30f62,
-    type: 3}
-  moveCoin2: {fileID: 4371142305920989272, guid: abde640b87017477aadb9529acb4f937,
-    type: 3}
-  moveCoin3: {fileID: 7014058725317006117, guid: 59599242e0b094299b881434cce87cde,
-    type: 3}
-  moveCoin4: {fileID: 6519814237045149053, guid: 1797494b1ece94ea6a8574a0e7d2873e,
-    type: 3}
-  moveCoin5: {fileID: 117165563567700334, guid: b3efd94f09e40424099d030d75f2a3f1,
+  moveCoinPerfab: {fileID: 2147032531760434136, guid: 43ccc5a3cda5c49ae99263f5d6e6f305,
     type: 3}
   coinSumText: {fileID: 782325435}
 --- !u!114 &1356289161
