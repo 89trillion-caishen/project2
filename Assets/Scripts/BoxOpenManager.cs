@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,15 +7,15 @@ using DG.Tweening;
 using System.Threading;
 public class BoxOpenManager : MonoBehaviour
 {
+    //编辑金币数的Text
+    [SerializeField] private Text coinSumText;
     //紫色宝箱打开闪耀特效
     [SerializeField] private GameObject Shop_TreasureChest_Purple;
-    //开始按钮
-    [SerializeField] private Button openButton;
-    //宝箱界面
-    [SerializeField] private Image boxImage;
     //宝箱打开和关闭
     [SerializeField] private Image boxOpen;
     [SerializeField] private Image boxClose;
+    //金币总数
+    private int coinSum=100;
     //金币动画预制件
     [SerializeField] private GameObject moveCoinPerfab;
     //计数
@@ -24,47 +25,58 @@ public class BoxOpenManager : MonoBehaviour
      private int count = 0;
      //金币个数
      private int coinCount = 5;
-     //金币总数
-     private int coinSum=100;
-     //编辑金币数的Text
-     public Text coinSumText;
-     private bool isOn=true;
+     //是否已经打开宝箱
+     private bool alreadyOpenBox = false;
+     //是否已经生成特效
+     private bool alreadyCreateTreasureChest=false;
+     //保存特效的对象
+     private GameObject shopTreasureChestPurple;
+     //金币帧动画的对象
      private GameObject newGameObject;
-     //初始化金币text
-    void Start()
-    {
-        //初始化金币信息
-        coinSumText.text=coinSum.ToString();
-        boxImage.gameObject.SetActive(false);
-    }
-    
-    /// <summary>
+     //金币增加次数
+     private int addCount = 0;
+     
+     /// <summary>
     /// 打开宝箱方法，控制包厢打开
     /// 激活特效
-    /// 如果已经播放三次，就只是增加金币
+    /// 如果已经播放三次，不再增加转动的金币数
     /// 调用实例化金币的帧动画方法
     /// </summary>
     public void OpenBox()
     {
-        if (isOn)
+        if (alreadyOpenBox)
         {
-            isOn = false;
-            Instantiate(Shop_TreasureChest_Purple, boxOpen.gameObject.transform);
-        } 
-        boxClose.gameObject.SetActive(false);
-        boxOpen.gameObject.SetActive(true);
-        if (count >= 3)
-        {
-            for (int i = 0; i < coinCount*(count+1); i++)
-            {
-                AddCoinSum();
-            }
-            count++;
+            alreadyOpenBox = false;
+            shopTreasureChestPurple.SetActive(false);
+            closeBox();
+            Invoke("CreateTreasureChest",0.3f);
+            Invoke("OpenBox",0.3f);
             return;
         }
+        CreateTreasureChest();
+        shopTreasureChestPurple.SetActive(true);
+        boxClose.gameObject.SetActive(false);
+        boxOpen.gameObject.SetActive(true);
         count++;
+        if (count == 4)
+        {
+            count--;
+        }
         CreateMoveCoin();
+        alreadyOpenBox = true;
     }
+     
+     /// <summary>
+     /// 生成特效
+     /// </summary>
+     public void CreateTreasureChest()
+    {
+        if (alreadyCreateTreasureChest) return;
+        shopTreasureChestPurple=Instantiate(Shop_TreasureChest_Purple, boxOpen.gameObject.transform);
+        alreadyCreateTreasureChest = true;
+    }
+
+
     /// <summary>
     /// 实例化金币的帧动画
     /// 循环调用自己
@@ -78,27 +90,40 @@ public class BoxOpenManager : MonoBehaviour
             return;
         }
         createMoveCoinCount++;
-        newGameObject = Instantiate(moveCoinPerfab, transform) as GameObject;
-        Invoke("MoveCoin",0.2f);
+        newGameObject = Instantiate(moveCoinPerfab, transform);
+        Destroy(newGameObject,1.4f);
+        Invoke("MoveCoin",0.3f);
         Invoke("CreateMoveCoin",0.2f);
     }
-    //移动金币至顶部
+    /// <summary>
+    /// 移动金币至顶部
+    /// </summary>
     public void MoveCoin()
     {
         newGameObject.transform.DOLocalMoveY(850,1);
         Invoke("AddCoinSum",1);
     }
-    //增减金币数，每次增加一个
+    /// <summary>
+    /// 增减金币数，每次增加一个
+    /// </summary>
     public void AddCoinSum()
     {
         coinSum++;
         coinSumText.text = coinSum.ToString();
     }
-    //openButton的点击事件，激活宝箱界面
-    public void openOnCLick()
+    /// <summary>
+    /// 关闭宝箱方法
+    /// </summary>
+    public void closeBox()
     {
-        openButton.gameObject.SetActive(false);
-        boxImage.gameObject.SetActive(true);
+        boxClose.gameObject.SetActive(true);
+        boxOpen.gameObject.SetActive(false);
+    }
+    /// <summary>
+    /// 初始化状态
+    /// </summary>
+    private void Start()
+    {
         boxOpen.gameObject.SetActive(false);
     }
 }

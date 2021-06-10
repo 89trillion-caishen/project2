@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 432238171}
   - component: {fileID: 432238173}
   - component: {fileID: 432238172}
+  - component: {fileID: 432238174}
   m_Layer: 5
   m_Name: boxImage
   m_TagString: Untagged
@@ -277,6 +278,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432238170}
   m_CullTransparentMesh: 0
+--- !u!114 &432238174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432238170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a07a9e8318a848d085ed98836b33cf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinSumText: {fileID: 782325435}
+  Shop_TreasureChest_Purple: {fileID: 4953088043433804836, guid: 0e02026b411fd46e1a408b5138ae4a9d,
+    type: 3}
+  boxOpen: {fileID: 1439836508}
+  boxClose: {fileID: 948480584}
+  moveCoinPerfab: {fileID: 2147032531760434136, guid: 43ccc5a3cda5c49ae99263f5d6e6f305,
+    type: 3}
 --- !u!1 &584108544
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,19 +379,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1356289160}
+      - m_Target: {fileID: 432238174}
         m_MethodName: OpenBox
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1356289160}
-        m_MethodName: addCoin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -430,7 +439,7 @@ GameObject:
   - component: {fileID: 687102144}
   - component: {fileID: 687102143}
   m_Layer: 5
-  m_Name: Image
+  m_Name: boxTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -832,7 +841,7 @@ GameObject:
   - component: {fileID: 1124744837}
   - component: {fileID: 1124744836}
   m_Layer: 5
-  m_Name: Image
+  m_Name: bottomBackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -906,7 +915,7 @@ GameObject:
   - component: {fileID: 1134956699}
   - component: {fileID: 1134956700}
   m_Layer: 5
-  m_Name: Image
+  m_Name: boxBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -997,18 +1006,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1356289159}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a07a9e8318a848d085ed98836b33cf5, type: 3}
+  m_Script: {fileID: 11500000, guid: c301c3b44312c4fb8a35b33701d786e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shop_TreasureChest_Purple: {fileID: 4953088043433804836, guid: 0e02026b411fd46e1a408b5138ae4a9d,
-    type: 3}
   openButton: {fileID: 1935068993}
   boxImage: {fileID: 432238172}
-  boxOpen: {fileID: 1439836508}
-  boxClose: {fileID: 948480584}
-  moveCoinPerfab: {fileID: 2147032531760434136, guid: 43ccc5a3cda5c49ae99263f5d6e6f305,
-    type: 3}
-  coinSumText: {fileID: 782325435}
 --- !u!114 &1356289161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1468,7 +1470,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1356289160}
-        m_MethodName: openOnCLick
+        m_MethodName: OpenViewOnCLick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
